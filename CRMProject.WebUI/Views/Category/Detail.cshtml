@@ -1,0 +1,45 @@
+﻿@model CategoryDTO
+<style>
+    .uk-grid {
+        margin-top: 10px;
+    }
+</style>
+<div class="md-card">
+    <div class="md-card-content">
+        <form asp-controller="Category" asp-action="Detail" asp-route-id="@Model?.CategoryId" method="post">
+            <h3>Kullanıcı Detay</h3>
+            <div>
+                <button id="btn-new" name="btn-new" class="md-btn md-btn-success md-btn-small waves-waves-effect waves-button">Yeni</button>
+                <button type="submit" id="btn-save" name="btn-save" class="md-btn md-btn-warning md-btn-small md-btn-wave-light waves-effect waves-button waves-light">Kaydet</button>
+                <button id="btn-delete" name="btn-delete" class="md-btn md-btn-danger md-btn-small waves-waves-effect waves-button">Sil</button>
+                <button id="btn-list" name="btn-list" class="md-btn md-btn-primary md-btn-small  waves-waves-effect waves-button">Listele</button>
+            </div>
+            <div class="uk-grid">
+                <div class="uk-width-medium-1-1">
+                    <div class="uk-form-row">
+                        <div class="uk-grid">
+                            <div class="uk-width-medium-1-3" data-uk-grid-margin">
+
+                                <label asp-for="CategoryName">Kategori Adı</label>
+                                <input asp-for="CategoryName" type="text" class="md-input"/>
+
+                            </div>
+                            <div class="uk-width-medium-1-3" data-uk-grid-margin">
+
+                                <label asp-for="CategoryDescription">Açıklama</label>
+                               @* <textarea asp-for="CategoryDescription" class="md-input"</textarea>*@
+                                <textarea class="md-input autosized" name="message" cols="10" rows="8" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-validation-threshold="10" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." style="overflow-x: hidden; overflow-wrap: break-word; height: 217px;"></textarea>
+
+                            </div>
+                            <div class="uk-width-medium-1-3" data-uk-grid-margin">
+
+                                <label asp-for="CategoryId">Kategori Id</label>
+                                <input asp-for="CategoryId" type="number" class="md-input"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

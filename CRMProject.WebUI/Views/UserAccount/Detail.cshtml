@@ -1,0 +1,45 @@
+﻿@model UserAccountDTO
+<style>
+    .uk-grid {
+        margin-top: 10px;
+    }
+</style>
+<div class="md-card">
+    <div class="md-card-content">
+        <form asp-controller="UserAccount" asp-action="Detail" asp-route-id="@Model?.UserId" method="post">
+            <h3>Kullanıcı Detay</h3>
+            <div>
+                <button id="btn-new" name="btn-new" class="md-btn md-btn-success md-btn-small waves-waves-effect waves-button">Yeni</button>
+                <button type="submit" id="btn-save" name="btn-save" class="md-btn md-btn-warning md-btn-small md-btn-wave-light waves-effect waves-button waves-light">Kaydet</button>
+                <button id="btn-delete" name="btn-delete" class="md-btn md-btn-danger md-btn-small waves-waves-effect waves-button">Sil</button>
+                <button id="btn-list" name="btn-list" class="md-btn md-btn-primary md-btn-small  waves-waves-effect waves-button">Listele</button>
+            </div>
+            <div class="uk-grid">
+                <div class="uk-width-medium-1-1">
+                    <div class="uk-form-row">
+                        <div class="uk-grid">
+                            <input type="hidden" asp-for="UserId" value="" />
+                            <div class="uk-width-medium-1-3" data-uk-grid-margin">
+
+                                <label asp-for="UserName">Kullanıcı Adı</label>
+                                <input asp-for="UserName" type="text" class="md-input" />
+
+                            </div>
+                            <div class="uk-width-medium-1-3" data-uk-grid-margin">
+
+                                <label asp-for="Password">Şifre</label>
+                                <input asp-for="Password" type="password" class="md-input" />
+
+                            </div>
+                            <div class="uk-width-medium-1-3" data-uk-grid-margin">
+
+                                <label asp-for="FullName">Tam Adı</label>
+                                <input asp-for="FullName" type="text" class="md-input" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

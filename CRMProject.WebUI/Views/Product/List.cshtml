@@ -1,0 +1,58 @@
+﻿@model ProductDTO
+
+<h3 class="heading_b" uk-margin-bottom>Ürün Listesi</h3>
+<div class="md-card uk-margin-medium-bottom">
+
+    <div class="md-card-content">
+        <table class="uk-table" id="grdDataDiv">
+        </table>
+    </div>
+</div>
+@section JsSection{
+
+    <!-- page specific plugins -->
+    <!-- datatables -->
+    <script src="~/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <!-- datatables buttons-->
+    <script src="~/bower_components/datatables-buttons/js/dataTables.buttons.js"></script>
+    <script src="~/assets/js/custom/datatables/buttons.uikit.js"></script>
+    <script src="~/bower_components/jszip/dist/jszip.min.js"></script>
+    <script src="~/bower_components/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/bower_components/pdfmake/build/vfs_fonts.js"></script>
+    <script src="~/bower_components/datatables-buttons/js/buttons.colVis.js"></script>
+    <script src="~/bower_components/datatables-buttons/js/buttons.html5.js"></script>
+    <script src="~/bower_components/datatables-buttons/js/buttons.print.js"></script>
+
+    <!-- datatables custom integration -->
+    <script src="~/assets/js/custom/datatables/datatables.uikit.min.js"></script>
+
+    <!--  datatables functions -->
+    @*<script src="~/assets/js/pages/plugins_datatables.min.js"></script>*@
+
+
+
+    <script>
+        var dataTable = $("#grdDataDiv").DataTable({
+            "ajax": {
+                url: 'product-list-data',
+                type: 'GET',
+                dataSrc: 'data'
+            },
+            "columns": [
+                { data: 'ProductId', title: 'ID' },
+                { data: 'ProductName', title: 'Ürün Adı' },
+                { data: 'Price', title: 'Fiyat' },
+                { data: 'CategoryId', title: 'Category' }
+                
+            ]
+        });
+        $('#grdDataDiv tbody').on('click', 'tr', function () {
+            var data = dataTable.row(this).data();
+
+            window.location.href = "/product-detail/" + data.productId;
+        });
+
+
+        console.log(dataTable)
+    </script>
+}
